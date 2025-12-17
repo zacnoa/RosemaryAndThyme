@@ -2,9 +2,9 @@ import type {RecipeState} from "../entity/RecipeState.ts";
 import type {DispatchAction} from "../types/DispatchAction.ts";
 
 /**
- * Handles changes to the recipe state
- * @param state current state of the recipe
- * @param action action to be performed
+ * Reducer function for managing state transitions in a recipe editing workflow.
+ *
+ *
  */
 export function recipeReducer(state:RecipeState,action:DispatchAction):RecipeState
 {

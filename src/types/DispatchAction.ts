@@ -1,5 +1,9 @@
+import type {ActionType} from "../enums/ActionType.ts";
+
+
 /**
- * represents dispatch actions to be passed to the reducer
+ * Represents dispatch actions to be passed to the dispatch function with a discriminated union
+ * @see DispatchProp
  */
 export type DispatchAction=
-    |{type:"edited_textArea"; newValue:string};
+    |{type:ActionType; newValue:string};

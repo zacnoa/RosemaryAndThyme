@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * Handles the resizing of the textarea
+ * Calculates the height of the textarea based on its scroll height and changes the corresponding textarea height
  * @param event of the textarea
  */
 export  function autoResizeHeight(event:React.ChangeEvent<HTMLTextAreaElement>): void {
