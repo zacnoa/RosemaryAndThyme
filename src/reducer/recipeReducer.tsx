@@ -1,5 +1,5 @@
 import type {RecipeState} from "../entity/RecipeState.ts";
-import type {DispatchAction} from "../types/DispatchAction.ts";
+import type {DispatchAction} from "./DispatchAction.ts";
 
 /**
  * Reducer function for managing state transitions in a recipe editing workflow.

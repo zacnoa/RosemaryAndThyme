@@ -1,4 +1,4 @@
-import type {DispatchProp} from "./DispatchProp.ts";
+import type {DispatchFunction} from "../../reducer/DispatchFunction.ts";
 
 
 /**
@@ -6,7 +6,9 @@ import type {DispatchProp} from "./DispatchProp.ts";
  *  @see AutoResizableTextArea
  *  @see DispatchProp
  */
-export type AutoResizableTextAreaProp= DispatchProp &{
+export type AutoResizableTextAreaProp={
     value:string,
     placeHolder:string,
+    dispatchFunction:DispatchFunction<HTMLTextAreaElement>
+    
 }

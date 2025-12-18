@@ -10,19 +10,18 @@ import {autoResizeHeight} from "../utils/autoResizeHeight.ts";
  * Should be used when a textarea needs to be able to dynamically change its height to fit its scroll height
  * @param value of the textarea
  * @param placeHolder of the textarea
- * @param dispatch function to be called when the textarea changes
- * @param type of the action to be dispatched
+ * @param dispatchFunction function to be called when the textarea changes
  * @see  AutoResizableTextAreaProp
  * @returns JSX.Element of type AutoResizableTextAreaProp
  *
  *
  * */
-export function AutoResizableTextArea({value,placeHolder,dispatch,type}: Readonly<AutoResizableTextAreaProp>) :JSX.Element
+export function AutoResizableTextArea({value,placeHolder,dispatchFunction}: Readonly<AutoResizableTextAreaProp>) :JSX.Element
 {
 
     function handleChange(event:React.ChangeEvent<HTMLTextAreaElement>): void
     {
-        dispatch({type:type,newValue:event.target.value});
+        dispatchFunction(event)
         autoResizeHeight(event);
 
     }
