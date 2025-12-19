@@ -10,5 +10,6 @@ export type AutoResizableTextAreaProp={
     value:string,
     placeHolder:string,
     dispatchFunction:DispatchFunction<HTMLTextAreaElement>
+    index?:number
     
 }

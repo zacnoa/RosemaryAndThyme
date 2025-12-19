@@ -1,14 +1,16 @@
-import {type ChangeEvent, type JSX, useReducer} from "react";
-import {AutoResizableTextArea} from "../components/AutoResizableTextArea.tsx";
+
 import {recipeReducer} from "../reducer/recipeReducer.tsx";
 import {initialStateOfRecipe} from "../reducer/initialStateOfRecipe.ts";
-import {ActionType} from "../enums/ActionType.ts";
 import type {DispatchFunction} from "../reducer/DispatchFunction.ts";
+import {type JSX, useReducer} from "react";
+import {TitleDescription} from "../containerComponents/TitleDescription.tsx";
 
 
 /**
  * Represents the page which should be used for editing recipes
  *
+ * The dispatch function should never be called directly, instead it should be called inside  {@link DispatchFunction}
+ * which is passed as a prop to the child component that needs to call the dispatch function
  */
 export  function RecipeEditor():JSX.Element
 {
@@ -16,17 +18,16 @@ export  function RecipeEditor():JSX.Element
     const [currentRecipe,dispatch]=useReducer(recipeReducer,initialStateOfRecipe);
 
 
-    let dispatchfunction:DispatchFunction<HTMLTextAreaElement>=(event:ChangeEvent<HTMLTextAreaElement>) =>
-        dispatch({type:ActionType.editedTextArea,newValue:event.target.value});
 
  return(
      <div>
-        <AutoResizableTextArea
-            value={currentRecipe.value}
-            placeHolder={"kakav vam je dan"}
-            dispatchFunction={dispatchfunction}
-        >
-        </AutoResizableTextArea>
+        <TitleDescription
+            title={currentRecipe.title}
+            description={currentRecipe.description}
+            dispatch={dispatch}
+            image={currentRecipe.headerImage}>
+
+        </TitleDescription>
 
      </div>
  )

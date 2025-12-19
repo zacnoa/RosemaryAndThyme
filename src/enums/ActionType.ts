@@ -2,10 +2,9 @@
  * Represents the different actions that can be performed on the recipe state
  */
 export const ActionType={
-    editedTextArea:"edited_textArea"
+    editedTitle:"edited_title",
+    editedDescription:"edited_description",
+    editedHeaderImage:"edited_headerImage"
 } as const;
-
-/**
- * Type of ActionType to be used as an enum for props that require an ActionType value
- */
-export type ActionType=typeof ActionType[keyof typeof ActionType];
+//  as const turns the object into a readonly type and makes it so that all string values are interpreted as string
+//  literal type and not strings
