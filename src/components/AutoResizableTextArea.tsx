@@ -16,12 +16,12 @@ import {autoResizeHeight} from "../utils/autoResizeHeight.ts";
  *
  *
  * */
-export function AutoResizableTextArea({value,placeHolder,dispatchFunction}: Readonly<AutoResizableTextAreaProp>) :JSX.Element
+export function AutoResizableTextArea({value,placeholder,textDispatchFunction}: Readonly<AutoResizableTextAreaProp>) :JSX.Element
 {
 
     function handleChange(event:React.ChangeEvent<HTMLTextAreaElement>): void
     {
-        dispatchFunction(event)
+        textDispatchFunction(event)
         autoResizeHeight(event);
 
     }
@@ -30,7 +30,7 @@ export function AutoResizableTextArea({value,placeHolder,dispatchFunction}: Read
 
     return(
         <div>
-            <textarea value={value} placeholder={placeHolder} onChange={handleChange}></textarea>
+            <textarea value={value} placeholder={placeholder} onChange={handleChange}></textarea>
         </div>
     )
 

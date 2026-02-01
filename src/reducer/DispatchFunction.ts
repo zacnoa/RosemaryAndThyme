@@ -9,4 +9,6 @@ import {type ChangeEvent} from "react";
  *
  *
  */
-export type DispatchFunction<T extends HTMLElement>=(event:ChangeEvent<T>)=>void
+export type DispatchFunction<T extends HTMLElement> = (event: ChangeEvent<T>) => void
+
+export type DispatchFunctionEventless = () => void;

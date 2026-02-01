@@ -4,6 +4,8 @@ import {initialStateOfRecipe} from "../reducer/initialStateOfRecipe.ts";
 import type {DispatchFunction} from "../reducer/DispatchFunction.ts";
 import {type JSX, useReducer} from "react";
 import {TitleDescription} from "../containerComponents/TitleDescription.tsx";
+import Ingredients from "../containerComponents/Ingredients.tsx";
+import Instructions from "../containerComponents/Instructions.tsx";
 
 
 /**
@@ -21,14 +23,14 @@ export  function RecipeEditor():JSX.Element
 
  return(
      <div>
-        <TitleDescription
+         <TitleDescription
             title={currentRecipe.title}
             description={currentRecipe.description}
             dispatch={dispatch}
             image={currentRecipe.headerImage}>
-
-        </TitleDescription>
-
+         </TitleDescription>
+         <Ingredients ingredients={currentRecipe.ingredients} dispatch={dispatch} />
+         <Instructions instructions={currentRecipe.instructions} dispatch={dispatch}/>
      </div>
  )
 }

@@ -1,9 +1,11 @@
-import type {CloudinaryImage} from "../CloudinaryImage.ts";
-import type {LocalImage} from "../LocalImage.ts";
-import type {DispatchFunction} from "../../reducer/DispatchFunction.ts";
+import type {CloudinaryImage} from "../../entity/CloudinaryImage.ts";
+import type {LocalImage} from "../../entity/LocalImage.ts";
+import type {DispatchFunction, DispatchFunctionEventless} from "../../reducer/DispatchFunction.ts";
 
 export type ImagePickerProp = {
     image:CloudinaryImage | LocalImage
-    dispatchFunction:DispatchFunction<HTMLInputElement>
+    dispatchFunctionAddImage:DispatchFunction<HTMLInputElement>
+    dispatchFunctionDeleteImage:DispatchFunctionEventless
+    showPlaceholder:boolean
 
 }

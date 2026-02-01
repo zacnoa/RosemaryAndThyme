@@ -2,7 +2,7 @@
  * Represents an image stored locally
  */
 
-export type LocalImage = {
+export interface LocalImage{
         localPath:string,
         file?:File
     }

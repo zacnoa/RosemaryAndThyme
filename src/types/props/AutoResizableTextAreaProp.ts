@@ -8,8 +8,7 @@ import type {DispatchFunction} from "../../reducer/DispatchFunction.ts";
  */
 export type AutoResizableTextAreaProp={
     value:string,
-    placeHolder:string,
-    dispatchFunction:DispatchFunction<HTMLTextAreaElement>
-    index?:number
-    
+    placeholder:string,
+    textDispatchFunction:DispatchFunction<HTMLTextAreaElement>
+
 }

@@ -1,6 +1,6 @@
 /**
  * Represents an image stored in cloudinary
  */
-export type CloudinaryImage = {
+export interface CloudinaryImage {
         cloudinaryUrl:string
     }

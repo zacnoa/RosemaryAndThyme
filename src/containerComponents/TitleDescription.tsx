@@ -1,9 +1,10 @@
 import {AutoResizableTextArea} from "../components/AutoResizableTextArea.tsx";
 import type {TitleDescriptionProp} from "../types/props/containerProps/TitleDescriptionProp.ts";
-import type {DispatchFunction} from "../reducer/DispatchFunction.ts";
+import type {DispatchFunction, DispatchFunctionEventless} from "../reducer/DispatchFunction.ts";
 import {ActionType} from "../enums/ActionType.ts";
 import type {ChangeEvent} from "react";
-import {ImagePicker} from "../components/ImagePicker.tsx";
+import ImagePicker from "../components/ImagePicker.tsx";
+import {Paths} from "../enums/Paths.ts";
 
 
 /**
@@ -52,15 +53,25 @@ export function TitleDescription({title,description,image,dispatch}: Readonly<Ti
             console.log("error when picking image")
         }
     }
+    const imagePickerDeleteFunction:DispatchFunctionEventless = () =>
+    {
+        dispatch(
+            {
+                type:ActionType.editedHeaderImage,
+                localPath:Paths.headerImage
+            }
+        )
+        console.log("deleted image")
+    }
 
     return (
         <div>
             <div>
-                <AutoResizableTextArea value={title} placeHolder={"Title..."} dispatchFunction={titleDispatchFunction}></AutoResizableTextArea>
-                <AutoResizableTextArea value={description} placeHolder={"Description..."} dispatchFunction={descriptionDispatchFunction}></AutoResizableTextArea>
+                <AutoResizableTextArea value={title} placeholder={"Title..."} textDispatchFunction={titleDispatchFunction}></AutoResizableTextArea>
+                <AutoResizableTextArea value={description} placeholder={"Description..."} textDispatchFunction={descriptionDispatchFunction}></AutoResizableTextArea>
             </div>
             <div>
-            <ImagePicker image={image} dispatchFunction={imagePickerDispatchFunction}></ImagePicker>
+            <ImagePicker image={image} dispatchFunctionAddImage={imagePickerDispatchFunction} dispatchFunctionDeleteImage={imagePickerDeleteFunction} showPlaceholder={true}></ImagePicker>
             </div>
         </div>
     )
