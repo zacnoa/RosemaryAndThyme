@@ -22,12 +22,14 @@ export default function Instructions({instructions,dispatch}:InstructionsProp) {
    }
    const removeItem = (index:number):DispatchFunctionEventless=>()=>
    {
-       dispatch(
-          {
-              type: ActionType.removedInstruction,
-              index:index
-          }
-       )
+       if(instructions.length>1) {
+           dispatch(
+               {
+                   type: ActionType.removedInstruction,
+                   index: index
+               }
+           )
+       }
    }
    const textDispatchFunction =(index:number)=> (event:ChangeEvent<HTMLTextAreaElement>):void =>
    {

@@ -17,5 +17,8 @@ export type DispatchAction=
     |{type:typeof ActionType.removedInstruction, index:number}
     |{type:typeof ActionType.editedInstruction, index:number, newValue:string}
     |{type:typeof ActionType.editedInstructionImage,index:number,localPath:string,file?:File}
+    |{type:typeof ActionType.addedAside,index:number}
+    |{type:typeof ActionType.removedAside, index:number}
+    |{type:typeof ActionType.editedAside, index:number, newValue:string}
 
 

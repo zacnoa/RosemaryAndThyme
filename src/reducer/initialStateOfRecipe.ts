@@ -10,7 +10,8 @@ export const initialStateOfRecipe:RecipeState = {
     description:"",
     headerImage:{localPath:Paths.headerImage},
     ingredients:[{value:"",amount:150, unit:"g"}],
-    instructions:[{value: "", image:{localPath:Paths.headerImage}}]
+    instructions:[{value: "", image:{localPath:Paths.headerImage}}],
+    aside:[""]
 
 
 }

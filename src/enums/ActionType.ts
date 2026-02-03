@@ -13,6 +13,9 @@ export const ActionType={
     removedInstruction:"removed_instruction",
     editedInstruction:"edited_instruction",
     editedInstructionImage:"edited_instructionImage",
+    addedAside:"added_aside",
+    removedAside:"removed_aside",
+    editedAside:"edited_aside"
 
 } as const;
 //  as const turns the object into a readonly type and makes it so that all string values are interpreted as string

@@ -99,6 +99,29 @@ export function recipeReducer(state: RecipeState, action: DispatchAction): Recip
                 instructions:newInstructions,
             }
         }
+        case ActionType.addedAside:{
+            let newAside = [...state.aside]
+            newAside.splice(action.index+1,0,"")
+            return {
+                ...state,
+                aside:newAside,
+            }
+
+        }
+        case ActionType.removedAside:{
+            return {
+                ...state,
+                aside:state.aside.filter((_,i)=>i!==action.index),
+            }
+        }
+        case ActionType.editedAside:{
+            let newAside = [...state.aside];
+            newAside[action.index]=action.newValue;
+            return {
+                ...state,
+                aside:newAside,
+            }
+        }
 
 
         default: {

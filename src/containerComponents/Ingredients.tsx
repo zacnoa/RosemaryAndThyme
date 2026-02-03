@@ -58,6 +58,7 @@ export default function Ingredients({ingredients,dispatch}: Readonly<Ingredients
 
     const addItem = (index:number):DispatchFunctionEventless =>()=>
     {
+
         dispatch(
             {
                 type:ActionType.addedIngredient,
@@ -65,17 +66,20 @@ export default function Ingredients({ingredients,dispatch}: Readonly<Ingredients
             }
         )
         keys.add();
-        console.log(ingredients.length);
+
     }
     const removeItem = (index:number):DispatchFunctionEventless =>()=>
     {
-        dispatch(
-            {
-                type:ActionType.removedIngredient,
-                index:index
-            }
-        )
-        keys.removeAt(index);
+        if(ingredients.length>1)
+        {
+            dispatch(
+                {
+                    type:ActionType.removedIngredient,
+                    index:index
+                }
+            )
+            keys.removeAt(index);
+        }
     }
 
     const formatAmount = ({amount, unit}: Ingredient): string => {

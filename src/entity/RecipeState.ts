@@ -12,5 +12,6 @@ export interface RecipeState
     description:string;
     headerImage:CloudinaryImage | LocalImage,
     ingredients:Ingredient[],
-    instructions:Instruction[]
+    instructions:Instruction[],
+    aside:string[]
 }
