@@ -21,7 +21,7 @@ export function recipeReducer(state: RecipeState, action: DispatchAction): Recip
         case ActionType.editedHeaderImage:
             return {
                 ...state,
-                headerImage: {
+                headerImage: {...state.headerImage,
                     localPath: action.localPath,
                     file: action.file,
                 },
@@ -93,7 +93,7 @@ export function recipeReducer(state: RecipeState, action: DispatchAction): Recip
 
         case ActionType.editedInstructionImage:{
             let newInstructions= [...state.instructions];
-            newInstructions[action.index] = {...newInstructions[action.index], image:{localPath:action.localPath,file:action.file}}
+            newInstructions[action.index] = {...newInstructions[action.index], image:{...newInstructions[action.index].image,localPath:action.localPath,file:action.file}}
             return{
                 ...state,
                 instructions:newInstructions,

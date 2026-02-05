@@ -1,5 +1,4 @@
 import type {RecipeState} from "../entity/RecipeState.ts";
-import {Paths} from "../enums/Paths.ts";
 
 
 /**
@@ -8,9 +7,9 @@ import {Paths} from "../enums/Paths.ts";
 export const initialStateOfRecipe:RecipeState = {
     title:"",
     description:"",
-    headerImage:{localPath:Paths.headerImage},
+    headerImage:{},
     ingredients:[{value:"",amount:150, unit:"g"}],
-    instructions:[{value: "", image:{localPath:Paths.headerImage}}],
+    instructions:[{value: "", image:{}}],
     aside:[""]
 
 
