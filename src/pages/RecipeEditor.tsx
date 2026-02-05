@@ -23,16 +23,18 @@ export  function RecipeEditor():JSX.Element
 
 
  return(
-     <div>
-         <TitleDescription
-            title={currentRecipe.title}
-            description={currentRecipe.description}
-            dispatch={dispatch}
-            image={currentRecipe.headerImage}>
-         </TitleDescription>
-         <Ingredients ingredients={currentRecipe.ingredients} dispatch={dispatch} />
-         <Instructions instructions={currentRecipe.instructions} dispatch={dispatch}/>
-         <Aside aside={currentRecipe.aside} dispatch={dispatch}></Aside>
+     <div >
+         <div>
+             <TitleDescription
+                title={currentRecipe.title}
+                description={currentRecipe.description}
+                dispatch={dispatch}
+                image={currentRecipe.headerImage}>
+             </TitleDescription>
+             <Ingredients ingredients={currentRecipe.ingredients} dispatch={dispatch} />
+             <Instructions instructions={currentRecipe.instructions} dispatch={dispatch}/>
+             <Aside aside={currentRecipe.aside} dispatch={dispatch}></Aside>
+         </div>
      </div>
  )
 }

@@ -35,7 +35,7 @@ export default function ImagePicker({image,dispatchFunctionAddImage,dispatchFunc
         if (!showPlaceholder && !addedImageFlag) {
             return { width: 0, height: 0, display: "inline-block" };
         }
-        return { maxHeight: "500px", maxWidth:"500px", border:"1px solid black" };
+        return { maxHeight: "200px", maxWidth:"200px", border:"1px solid black" };
     };
 
 

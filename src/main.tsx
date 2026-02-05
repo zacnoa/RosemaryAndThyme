@@ -2,6 +2,7 @@
 import ReactDom, {type Root} from "react-dom/client";
 import {RecipeEditor} from "./pages/RecipeEditor.tsx";
 import React from "react";
+import "./index.css";
 
 
 /**
