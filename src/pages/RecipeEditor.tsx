@@ -23,7 +23,7 @@ export  function RecipeEditor():JSX.Element
 
 
  return(
-     <div >
+     <div>
          <div>
              <TitleDescription
                 title={currentRecipe.title}

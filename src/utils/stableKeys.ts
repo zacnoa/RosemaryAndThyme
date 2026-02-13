@@ -1,48 +1,61 @@
-import { useRef } from "react";
+import { useState } from "react";
 import { nanoid } from "nanoid";
 
 /**
- * Hook koji generira stabilne React key-eve za listu
- * @param length Broj elemenata u listi
+ * Hook za stabilne key-eve
  */
 export function useStableKeys(length: number) {
-    const keysRef = useRef<string[]>([]);
-
-    // Sinkronizacija duljine
-    if (keysRef.current.length < length) {
-        // Dodavanje novih key-eva
-        const diff = length - keysRef.current.length;
-        keysRef.current.push(...Array.from({ length: diff }, () => nanoid()));
-    } else if (keysRef.current.length > length) {
-        // Skraćivanje (remove s kraja)
-        keysRef.current.length = length;
-    }
+    // Inicijalni state sa length key-eva
+    const [keys, setKeys] = useState<string[]>(() =>
+        Array.from({ length }, () => nanoid())
+    );
 
     /**
-     * Move key s indeksa `from` na `to`
+     * Dohvati key po indexu
+     */
+    const get = (index: number) => keys[index];
+
+    /**
+     * Dodaj novi key na kraj niza
+     */
+    const add = () => setKeys((prev) => [...prev, nanoid()]);
+
+    /**
+     * Premjesti key s indeksa 'from' na 'to'
      */
     const move = (from: number, to: number) => {
-        const [key] = keysRef.current.splice(from, 1);
-        keysRef.current.splice(to, 0, key);
+        setKeys((prev) => {
+            if (from < 0 || from >= prev.length || to < 0 || to >= prev.length)
+                return prev;
+            const copy = [...prev];
+            const [moved] = copy.splice(from, 1);
+            copy.splice(to, 0, moved);
+            return copy;
+        });
     };
 
     /**
-     * Remove key na indexu
+     * Ukloni key na određenom indexu
      */
     const removeAt = (index: number) => {
-        keysRef.current.splice(index, 1);
-    };
-    const add = () => {
-        keysRef.current.push(nanoid());
+        setKeys((prev) => {
+            if (index < 0 || index >= prev.length) return prev;
+            const copy = [...prev];
+            copy.splice(index, 1);
+            return copy;
+        });
     };
 
-    const get =(index:number)=>keysRef.current[index]
+    /**
+     * Sinkronizacija duljine: korisnik komponenta treba pozvati add() ili removeAt()
+     * Ako se length promijeni, ne radimo setKeys u effectu – time izbjegavamo cascading render
+     */
 
     return {
-        keys: keysRef.current,
+        keys,
+        get,
         add,
         move,
         removeAt,
-        get
     };
 }
